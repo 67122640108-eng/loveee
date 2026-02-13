@@ -7,277 +7,173 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Prompt', sans-serif;
-}
-
-/* Floating hearts */
-.heart-float {
-    position: absolute;
-    bottom: -20px;
-    animation: floatUp 6s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes floatUp {
-    0% { transform: translateY(0) scale(1); opacity: 0; }
-    10% { opacity: 0.8; }
-    100% { transform: translateY(-100%) scale(1.4) rotate(15deg); opacity: 0; }
-}
-
-/* Beat heart */
-@keyframes beat {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-}
-
-.beat {
-    animation: beat 1.2s infinite;
-}
-
-/* Shimmer text */
-@keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-}
-
-.shimmer-text {
-    background: linear-gradient(90deg, #ff4d6d, #ff8fa3, #ffb6c1, #ff8fa3, #ff4d6d);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 3s linear infinite;
-}
-
-/* Sparkle animation */
-@keyframes sparkle {
-    0%, 100% { opacity: 0; transform: scale(0); }
-    50% { opacity: 1; transform: scale(1); }
-}
-
-.sparkle {
-    animation: sparkle 2s ease-in-out infinite;
-}
-
-/* Confetti */
-.confetti {
-    position: fixed;
-    pointer-events: none;
-    z-index: 40;
-}
-
-@keyframes confettiFall {
-    0% {
-        transform: translateY(-100%) rotate(0deg);
-        opacity: 1;
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body { font-family: 'Prompt', sans-serif; }
+    .heart-float { position: absolute; bottom: -20px; animation: floatUp 6s linear infinite; pointer-events: none; }
+    @keyframes floatUp {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        10% { opacity: 0.8; }
+        100% { transform: translateY(-100%) scale(1.4) rotate(15deg); opacity: 0; }
     }
-    100% {
-        transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
+    @keyframes beat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+    .beat { animation: beat 1.2s infinite; }
+    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+    .shimmer-text {
+        background: linear-gradient(90deg, #ff4d6d, #ff8fa3, #ffb6c1, #ff8fa3, #ff4d6d);
+        background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text; animation: shimmer 3s linear infinite;
     }
-}
-
-.confetti-falling {
-    animation: confettiFall 3s linear forwards;
-}
-
-/* Toast message */
-.toast {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 50;
-    animation: slideUp 0.3s ease-out forwards;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(20px);
+    @keyframes sparkle { 0%, 100% { opacity: 0; transform: scale(0); } 50% { opacity: 1; transform: scale(1); } }
+    .sparkle { animation: sparkle 2s ease-in-out infinite; }
+    .confetti { position: fixed; pointer-events: none; z-index: 40; }
+    @keyframes confettiFall {
+        0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
     }
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
-
-/* Wiggle animation */
-@keyframes wiggle {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-8px); }
-    75% { transform: translateX(8px); }
-}
-
-.wiggle {
-    animation: wiggle 0.4s ease-in-out;
-}
-
-/* Slide in animation */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.slide-in {
-    animation: slideIn 0.5s ease-out forwards;
-}
-
-.card-shadow {
-    box-shadow: 0 25px 50px -12px rgba(255, 77, 109, 0.2);
-}
-</style>
+    .confetti-falling { animation: confettiFall 3s linear forwards; }
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 50; animation: slideUp 0.3s ease-out forwards; }
+    @keyframes slideUp { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+    @keyframes wiggle { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+    .wiggle { animation: wiggle 0.4s ease-in-out; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .slide-in { animation: slideIn 0.5s ease-out forwards; }
+    .card-shadow { box-shadow: 0 25px 50px -12px rgba(255, 77, 109, 0.2); }
+  </style>
  </head>
  <body class="m-0">
-  <div id="app-wrapper" class="relative h-full w-full flex items-center justify-center overflow-auto" style="background: linear-gradient(135deg,#fff0f3,#ffb6c1,#ff8fa3);"><div id="hearts" class="absolute inset-0 pointer-events-none overflow-hidden"></div><div id="toast-container" class="fixed inset-0 pointer-events-none"></div><input type="file" id="imageInput" accept="image/*" style="display:none;" onchange="handleImageUpload(event)"> <div id="page1" class="page absolute inset-0 flex items-center justify-center p-4">
-    <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 w-full max-w-sm text-center card-shadow slide-in">
-     <div class="text-7xl beat mb-4">
-      ❤️
-     </div>
-     <h1 class="text-4xl font-bold shimmer-text mb-2">Happy Valentine</h1>
-     <p class="text-gray-600 mb-6 text-lg">ถึง <span id="name-page1" class="font-bold text-pink-500">อ้วน</span> คนพิเศษของหนู 💕</p>
-     <div class="image-container relative mb-6">
-      <div id="imageDisplay" class="w-full h-48 rounded-2xl overflow-hidden shadow-lg object-cover" style="background: white;">
-        <img id="previewImage" src="https://i.ibb.co/NdLXsKmB/image.jpg" style="display:block; width:100%; height:100%; object-fit:cover;">
+  <div id="app-wrapper" class="relative h-full w-full flex items-center justify-center overflow-auto" style="background: linear-gradient(135deg,#fff0f3,#ffb6c1,#ff8fa3);">
+    <div id="hearts" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+    <div id="toast-container" class="fixed inset-0 pointer-events-none"></div>
+
+    <div id="page1" class="page absolute inset-0 flex items-center justify-center p-4">
+      <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 w-full max-w-sm text-center card-shadow slide-in">
+        <div class="text-7xl beat mb-4">❤️</div>
+        <h1 class="text-4xl font-bold shimmer-text mb-2">Happy Valentine</h1>
+        <p class="text-gray-600 mb-6 text-lg">ถึง <span id="name-page1" class="font-bold text-pink-500">อ้วน</span> คนพิเศษของหนู 💕</p>
+        <div class="image-container relative mb-6">
+          <div id="imageDisplay" class="w-full h-48 rounded-2xl overflow-hidden shadow-lg object-cover" style="background: white;">
+            <img id="previewImage" src="https://i.ibb.co/NdLXsKmB/image.jpg" style="display:block; width:100%; height:100%; object-fit:cover;">
+          </div>
+        </div>
+        <button onclick="goPage(2)" class="w-full py-4 px-6 rounded-full text-white font-semibold text-lg hover:shadow-lg transition-all" style="background:linear-gradient(135deg,#ff4d6d,#ff8fa3)"> กดดูเซอร์ไพรส์ 💖 </button>
       </div>
-     </div><button onclick="goPage(2)" class="w-full py-4 px-6 rounded-full text-white font-semibold text-lg hover:shadow-lg transition-all" style="background:linear-gradient(135deg,#ff4d6d,#ff8fa3)"> กดดูเซอร์ไพรส์ 💖 </button>
     </div>
-   </div><div id="page2" class="page hidden absolute inset-0 flex items-center justify-center p-4">
-    <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 w-full max-w-sm text-center card-shadow slide-in">
-     <div class="text-5xl mb-4">
-      💍
-     </div>
-     <h2 id="name-page2" class="text-2xl font-bold text-pink-500 mb-4">สุขสันต์วันวาเลนไทน์นะอ้วน</h2>
-     <p id="love-msg" class="text-gray-600 mb-6 leading-relaxed text-lg">ขอบคุณที่ดูแลหนูทุกอย่างเลย<br>
-       ที่ทำกับข้าวให้กิน คอยเป็นห่วง<br>
-       แลล้วก็คอยหาเวลามาคุยกับหนูตลอด<br>
-       หนูรักอ้วนมาก และจะอยู่ข้างๆอ้วน<br>
-       เสมอเลยค้าบ 💕</p>
-     <div class="bg-gradient-to-r from-pink-100 to-rose-100 rounded-2xl p-4 mb-6">
-      <h3 id="question" class="text-xl font-bold text-pink-600"> รักหนูไหม? 💍</h3>
-     </div>
-     <div class="flex gap-3"><button onclick="sayYes()" class="flex-1 py-4 rounded-full text-white font-semibold hover:shadow-lg transition-all" style="background:linear-gradient(135deg,#ff4d6d,#ff8fa3)"> รักกก 💖 </button> <button id="no-btn" onclick="sayNo()" class="flex-1 py-4 rounded-full border-2 border-pink-300 text-pink-500 font-semibold hover:bg-pink-50 transition-all"> ไม่อะ 😳 </button>
-     </div>
+
+    <div id="page2" class="page hidden absolute inset-0 flex items-center justify-center p-4">
+      <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 w-full max-w-sm text-center card-shadow slide-in">
+        <div class="text-5xl mb-4">💍</div>
+        <h2 id="name-page2" class="text-2xl font-bold text-pink-500 mb-4">สุขสันต์วันวาเลนไทน์นะอ้วน</h2>
+        <p id="love-msg" class="text-gray-600 mb-6 leading-relaxed text-lg">ขอบคุณที่ดูแลหนูทุกอย่างเลย<br>ที่ทำกับข้าวให้กิน คอยเป็นห่วง<br>แล้วก็คอยหาเวลามาคุยกับหนูตลอด<br>หนูรักอ้วนมาก และจะอยู่ข้างๆอ้วน<br>เสมอเลยค้าบ 💕</p>
+        <div class="bg-gradient-to-r from-pink-100 to-rose-100 rounded-2xl p-4 mb-6">
+          <h3 id="question" class="text-xl font-bold text-pink-600">รักหนูไหมมม? 💍</h3>
+        </div>
+        <div class="flex gap-3">
+          <button onclick="sayYes()" class="flex-1 py-4 rounded-full text-white font-semibold hover:shadow-lg transition-all" style="background:linear-gradient(135deg,#ff4d6d,#ff8fa3)"> รักอ้วนนะ 💖 </button>
+          <button id="no-btn" onclick="sayNo()" class="flex-1 py-4 rounded-full border-2 border-pink-300 text-pink-500 font-semibold hover:bg-pink-50 transition-all"> ไม่อ่ะอ้วน 😳 </button>
+        </div>
+      </div>
     </div>
-   </div><div id="page3" class="page hidden absolute inset-0 flex items-center justify-center p-4">
-    <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 w-full max-w-sm text-center card-shadow slide-in">
-     <div class="text-7xl beat mb-4">
-      💖
-     </div>
-     <h1 class="text-4xl font-bold shimmer-text mb-4">เย้!!!</h1>
-     <p class="text-gray-600 text-lg">หนูดีใจที่สุดเลย 🥰<br><span id="final-msg" class="font-bold text-pink-500">รักอ้วนมากนะ 💕</span></p>
-     <div class="mt-8 flex justify-center gap-3 text-4xl"><span class="sparkle" style="animation-delay: 0s;">💕</span> <span class="sparkle" style="animation-delay: 0.3s;">💗</span> <span class="sparkle" style="animation-delay: 0.6s;">💖</span>
-     </div><button onclick="restart()" class="mt-8 py-3 px-6 rounded-full border-2 border-pink-300 text-pink-500 font-semibold hover:bg-pink-50 transition-all"> เริ่มใหม่ 🔄 </button>
+
+    <div id="page3" class="page hidden absolute inset-0 flex items-center justify-center p-4">
+      <div class="bg-white/95 backdrop-blur-sm rounded-3xl p-8 w-full max-w-sm text-center card-shadow slide-in">
+        <div class="text-7xl beat mb-4">💖</div>
+        <h1 class="text-4xl font-bold shimmer-text mb-4">เย้!!!</h1>
+        <p class="text-gray-600 text-lg">หนูดีใจที่สุดเลย 🥰<br><span id="final-msg" class="font-bold text-pink-500">รักอ้วนมากที่สุดในโลกเลยยย 💕</span></p>
+        <div class="mt-8 flex justify-center gap-3 text-4xl">
+          <span class="sparkle" style="animation-delay: 0s;">💕</span>
+          <span class="sparkle" style="animation-delay: 0.3s;">💗</span>
+          <span class="sparkle" style="animation-delay: 0.6s;">💖</span>
+        </div>
+        <button onclick="restart()" class="mt-8 py-3 px-6 rounded-full border-2 border-pink-300 text-pink-500 font-semibold hover:bg-pink-50 transition-all"> เริ่มใหม่ 🔄 </button>
+      </div>
     </div>
-   </div>
   </div>
+
   <script>
-let noClickCount = 0;
+    let noClickCount = 0;
 
-function goPage(n){
- document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
- document.getElementById('page' + n).classList.remove('hidden');
-}
+    function goPage(n){
+      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+      document.getElementById('page' + n).classList.remove('hidden');
+    }
 
-function sayYes() {
- goPage(3);
- createConfetti();
-}
+    function sayYes() {
+      goPage(3);
+      createConfetti();
+    }
 
-function sayNo() {
- noClickCount++;
- const btn = document.getElementById('no-btn');
- btn.classList.add('wiggle');
- setTimeout(() => btn.classList.remove('wiggle'), 400);
- 
- const messages = [
-  'เลือกใหม่ได้นะ 😝💗',
-  'คิดดีๆ นะ 🥺💕',
-  'จริงเหรอ~ 😢💔',
-  'อย่าเล่นน้า 🙈💖',
-  'กดรักเถอะนะ 🥹✨'
- ];
- 
- showToast(messages[Math.min(noClickCount - 1, messages.length - 1)]);
- 
- const currentScale = parseFloat(btn.style.transform?.match(/scale\(([^)]+)\)/)?.[1] || 1);
- if (currentScale > 0.5) {
-  btn.style.transform = `scale(${currentScale - 0.1})`;
- }
-}
+    function sayNo() {
+      noClickCount++;
+      const btn = document.getElementById('no-btn');
+      btn.classList.add('wiggle');
+      setTimeout(() => btn.classList.remove('wiggle'), 400);
+      
+      const messages = [
+        'เลือกใหม่นะ 😝💗',
+        'คิดดีๆ นะอ้วน 🥺💕',
+        'อ้วนไม่รักหนูเหรอ~ 😢💔',
+        'ไม่รักจริงอ่ะ~ 🙈💖',
+        'กดรักหนูเถอะนะอ้วนน 🥹✨'
+      ];
+      
+      showToast(messages[Math.min(noClickCount - 1, messages.length - 1)]);
+      
+      const currentScale = parseFloat(btn.style.transform?.match(/scale\(([^)]+)\)/)?.[1] || 1);
+      if (currentScale > 0.5) {
+        btn.style.transform = `scale(${currentScale - 0.1})`;
+      }
+    }
 
-function showToast(message) {
- const container = document.getElementById('toast-container');
- const existing = container.querySelector('.toast');
- if (existing) existing.remove();
- 
- const toast = document.createElement('div');
- toast.className = 'toast bg-white rounded-2xl px-6 py-4 card-shadow border border-pink-200';
- toast.innerHTML = `<p class="text-pink-500 font-semibold text-lg m-0">${message}</p>`;
- container.appendChild(toast);
- 
- setTimeout(() => toast.remove(), 2500);
-}
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      const existing = container.querySelector('.toast');
+      if (existing) existing.remove();
+      
+      const toast = document.createElement('div');
+      toast.className = 'toast bg-white rounded-2xl px-6 py-4 card-shadow border border-pink-200';
+      toast.innerHTML = `<p class="text-pink-500 font-semibold text-lg m-0">${message}</p>`;
+      container.appendChild(toast);
+      
+      setTimeout(() => toast.remove(), 2500);
+    }
 
-function createConfetti() {
- const container = document.getElementById('app-wrapper');
- const chars = ['🎊', '🎉', '💖', '💕', '✨', '🩷', '💗', '💝'];
- 
- for (let i = 0; i < 40; i++) {
-  setTimeout(() => {
-   const confetti = document.createElement('div');
-   confetti.className = 'confetti confetti-falling';
-   confetti.innerHTML = chars[Math.floor(Math.random() * chars.length)];
-   confetti.style.left = Math.random() * 100 + '%';
-   confetti.style.fontSize = (24 + Math.random() * 24) + 'px';
-   confetti.style.animationDuration = (2.5 + Math.random() * 1.5) + 's';
-   confetti.style.animationDelay = Math.random() * 0.5 + 's';
-   container.appendChild(confetti);
-   
-   setTimeout(() => confetti.remove(), 5000);
-  }, i * 80);
- }
-}
+    function createConfetti() {
+      const container = document.getElementById('app-wrapper');
+      const chars = ['🎊', '🎉', '💖', '💕', '✨', '🩷', '💗', '💝'];
+      for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti confetti-falling';
+          confetti.innerHTML = chars[Math.floor(Math.random() * chars.length)];
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.fontSize = (24 + Math.random() * 24) + 'px';
+          confetti.style.animationDuration = (2.5 + Math.random() * 1.5) + 's';
+          confetti.style.animationDelay = Math.random() * 0.5 + 's';
+          container.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 5000);
+        }, i * 80);
+      }
+    }
 
-function restart() {
- noClickCount = 0;
- document.getElementById('no-btn').style.transform = 'scale(1)';
- goPage(1);
-}
+    function restart() {
+      noClickCount = 0;
+      document.getElementById('no-btn').style.transform = 'scale(1)';
+      goPage(1);
+    }
 
-/* Hearts animation */
-function createHeart(){
- const h = document.createElement('div');
- h.className = 'heart-float';
- const hearts = ['❤️', '💕', '💗', '💖', '🧡', '🩷', '🤍'];
- h.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
- h.style.left = Math.random() * 100 + '%';
- h.style.fontSize = (16 + Math.random() * 28) + 'px';
- h.style.opacity = 0.6 + Math.random() * 0.4;
- document.getElementById('hearts').appendChild(h);
- setTimeout(() => h.remove(), 6500);
-}
+    function createHeart(){
+      const h = document.createElement('div');
+      h.className = 'heart-float';
+      const hearts = ['❤️', '💕', '💗', '💖', '🧡', '🩷', '🤍'];
+      h.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+      h.style.left = Math.random() * 100 + '%';
+      h.style.fontSize = (16 + Math.random() * 28) + 'px';
+      h.style.opacity = 0.6 + Math.random() * 0.4;
+      document.getElementById('hearts').appendChild(h);
+      setTimeout(() => h.remove(), 6500);
+    }
 
-setInterval(createHeart, 400);
-
-</script>
-</body>
+    setInterval(createHeart, 400);
+  </script>
+ </body>
 </html>
-
-
-
-
-
